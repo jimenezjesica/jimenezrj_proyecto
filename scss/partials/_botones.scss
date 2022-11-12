@@ -1,0 +1,12 @@
+
+@mixin botones($ancho , $alto , $bg , $grosor){
+
+    background-color:$bg;
+    width: $ancho;
+    height: $alto;
+    border-radius: 10px;
+    font-weight: $grosor;
+    border:0;
+    
+
+}

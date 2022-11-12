@@ -1,3 +1,6 @@
+@import "partials/variables";
+@import "partials/botones";
+
 * {
     margin: 0%;
     padding: 0%;
@@ -5,11 +8,11 @@
 
 
 body{
-    background-color: black;
+    background-color: $color_fondo;
 }
 
 header {
-    background-color: black;
+    background-color:$color_fondo;
    height: 600px;
 
 }
@@ -17,7 +20,7 @@ header {
 
 a {
     font-size: 20px;
-    color: rgb(114, 109, 109);
+    color: $color_texto;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-decoration: none;
 
@@ -25,18 +28,18 @@ a {
 }
 
 main {
-    background-color: black;
+    background-color:$color_fondo;
    
 }
 
 h2 {
-    color: rgb(114, 109, 109);
+    color:  $color_texto;
     text-align: center;
     
 }
 
 p {
-    color: rgb(114, 109, 109)
+    color:  $color_texto;
 }
 
 
@@ -49,44 +52,26 @@ footer p{
 
 footer {
     height: 50px;
-    background-color: rgb(5, 5, 5);
+    background-color: $color_fondo;
 
 }
 
 label {
-    color: rgb(114, 109, 109)
+    color:  $color_texto;
 }
 
-td {
-    color: rgb(114, 109, 109);
-    font-size: 20px;
-    text-align: center;
-    border-left:1px solid white;
-    border-right:1px solid white;
-}
 
-th {
-    font-size: 20px;
-    color: rgb(114, 109, 109);
-    text-align:center;
-    border-bottom:1px solid white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
 
-tr {
-    color: bisque;
-    border: 2mm;
-    border-color: blue;
-}
 
 h3 {
-    color: rgb(114, 109, 109);
+    color:  $color_texto;
     font-size: 25px;
+    text-align: center;
 }
 
 ul{
     display:flex;
-    background-color: rgb(7, 7, 7);
+    background-color: $color_fondo;
     list-style-type: none;
 }
 
@@ -94,7 +79,7 @@ ul{
 
 
 li{ 
-    color: rgb(114, 109, 109);
+    color:  $color_texto;
     text-align: center;
 }
 
@@ -103,22 +88,29 @@ a:hover{
     color:white;
 }
 
+
 table{
-    width: 80%;
-    height: 800px ;
-    margin-left:10%;
-    
-    padding:20px;
+   
+
+   th{
+        text-align: center;
+   }
+   
+   td{
+        text-align: center;
+   }
+
+   button{
+        @include botones(100%,80%,yellow,900);
+       
+    }
 }
 
 
-button{
-    background-color:yellow;
-    width: 80%;
-    height: 80%;
-    border-radius: 10px;
-    font-weight: 900;
-}
+
+
+
+
 img{
     width: 100%;
     height: 100%;
@@ -128,49 +120,96 @@ img{
 .titulos{
     font-size:30px;
     font-family: 'Dancing Script', cursive;
-    color:rgb(119, 118, 112);
+    color: $color_texto;
     margin-top:80px;
     margin-bottom:80px;
 }
 
 
-.section_discografia{
-    margin-top:100px;
-    width: 90%;
-    margin-left:100px;
-}
 
 
-.section_galeria{
+
+.galeria{
     display:grid;
-}
 
 
-.section_contacto{
-    height: 1100px;
-    width: 50%;
-    margin-top:200px;
-    margin-left:25%;
-    background-color: rgb(13, 12, 12);
-    background-image: url("../img/img_form.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-}
+    &__img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter:grayscale(100%);
+
+        &:hover{
+            filter:grayscale(0);
+        }
+        
+    }
 
 
-.img_galeria{
-
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter:grayscale(100%);
    
 }
 
 
-.img_galeria:hover{
-    filter:grayscale(0%)
+
+
+.contacto{
+    display:flex;
+    flex-direction: column;
+    height: 1100px; 
+    justify-content: center;
+    align-items: center;
+    
+
+    &__form{
+        display:grid;
+        flex-direction: column;
+        width: 70%;
+        height: 80%;
+        background-color: rgb(13, 12, 12);
+        background-image: url("../img/img_form.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        grid-template-columns: 90%;
+        grid-template-rows:10% 12% 55%;
+        grid-template-areas:"titulo"
+                             "parrafo"
+                             "form";
+        justify-content: center;
+        align-content: end;
+      
+
+
+    }
+
+    p{
+        font-size:20px;
+        text-align: center;
+        color:rgb(239, 239, 239);
+    }
+
+    h3{
+     
+        font-size:40px;
+        text-align: center;     
+        color: white;
+        font-family: 'Dancing Script', cursive;
+    }
+    
+    textarea{ 
+       font-size:20px;
+       width: 100%;
+    }
+
+    input{
+        width: 100%;
+        height: 30px;
+        margin-bottom:10px;       
+        font-size:20px;
+    }
 }
+
+
+
 
 #img_form{
     width: 45%;
@@ -182,8 +221,7 @@ img{
 form{ 
     width: 100%;
     height: 100%;
-    margin-left: 50px;
-    margin-bottom: 30%;
+ 
    
 }
 
@@ -198,62 +236,22 @@ label{
 }
 
 
-input{
-    width: 45%;
-    height: 30px;
-    margin-bottom:10px;
-    display:inline-block;
-    font-size:20px;
-}
-
-textarea{
-    margin-top:10px;
-    width: 91%;
-    font-size:20px;
-}
-
-.parrafo_form{
-    padding-top:5%;
-    padding-bottom: 5%;
-    color:silver;   
-    text-align: center;
-    font-size:25px;
 
 
-}
+
+
+
 
 #boton_form{
-    margin-left:30%;
-    margin-top:30px;
-    background-color:rgb(53, 53, 53);
-    border:0;
-  
-    width: 30%;
-    height: 30px;
-    border-radius: 10px;
-    font-weight: 900;
-    color:white;
-    font-size:20px;
+    @include botones(30%, 8% , rgb(53, 53, 53) , 900);
+    margin-top:10px;
+    margin-left:35%;
+   
 }
 
 
-.section_contacto h3{
-    font-size:40px;
-    text-align: center;
-    padding-top: 35%;
-    padding-bottom:10%;
-    color: white;
-    font-family: 'Dancing Script', cursive;
-    
-}
 
 
-#contenido_form{
-    background-color: rgba(23, 23, 23, 0.682);
-    width: 90%;
-    margin-left:5%;
-    height: 550px;
-}
 
 
 
@@ -268,6 +266,29 @@ textarea{
     display:flex;
 }
 
+
+.grilla_discografia{
+
+    display:grid;
+
+    section{
+        background-color: rgba(11, 11, 11, 0.907);
+       
+        h3{
+            padding-top:1%;
+            height: 9%;
+           
+            
+        }
+        iframe{
+            height: 90%;
+           
+        }
+    }
+
+   
+   
+}
 
 @media only screen and (max-width:600px){
 
@@ -295,6 +316,8 @@ textarea{
 
         justify-content: center;
         align-content: space-around;
+
+       
     }
 
 
@@ -321,7 +344,7 @@ textarea{
     }
 
 
-    .section_galeria{
+    .galeria{
         height: 3000px;
         grid-template-rows: 350px 350px 350px 350px 350px 350px;
         grid-template-columns: 90%;
@@ -329,7 +352,40 @@ textarea{
         align-content: space-around;
     }
 
+
+    .grilla_discografia{
+        height: 5500px;
+        grid-template-columns: 95%;
+        grid-template-rows: 400px 400px 400px 400px 400px 400px 400px 400px 400px;
+        grid-template-areas: "disco1"
+                             "disco2"
+                             "disco3"
+                             "disco4"
+                             "disco5"
+                             "disco6"
+                             "disco7"
+                             "disco8"
+                             "disco9";
+        justify-content: center;
+        align-content: space-around;
+
+       
+      
+    }
+
     
+.contacto{   
+    height: 1000px; 
+    
+
+    &__form{       
+        width: 90%;      
+    }
+
+
+    
+}
+
 }
 
 
@@ -373,7 +429,7 @@ textarea{
         flex-direction: column;
         justify-content: space-evenly;
         grid-area: texto;
-        background-color: black;
+        background-color: $color_fondo;
     }
 
 
@@ -398,12 +454,28 @@ textarea{
     }
 
 
-    .section_galeria{
+    .galeria{
         height: 3000px;
         grid-template-rows:  25% 25% 25% ;
         grid-template-columns: 30% 30%;
         justify-content: space-evenly; 
         align-content: space-around;
+    }
+
+    .grilla_discografia{
+        height: 4500px;
+        grid-template-columns: 45% 45%;
+        grid-template-rows: 600px 600px 600px 600px 600px;
+        grid-template-areas: "disco1 disco2"
+                             "disco3 disco4"
+                             "disco5 disco6 "
+                             "disco7 disco8"
+                             "disco9 ."    ;
+        justify-content:space-evenly;
+        align-content: space-around;
+
+
+      
     }
 
 }
